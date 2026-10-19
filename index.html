@@ -158,6 +158,18 @@
         /* Lightbox zoom cursor */
         .cursor-zoom-in { cursor: zoom-in; }
         .cursor-zoom-out { cursor: zoom-out; }
+
+        /* Proportional Scaling for Standard 1080p & High-DPI Displays */
+        @media (min-width: 1024px) and (max-width: 1920px) {
+            html {
+                font-size: 14.5px;
+            }
+        }
+        @media (min-width: 1921px) {
+            html {
+                font-size: 16px;
+            }
+        }
     </style>
     
 </head>
