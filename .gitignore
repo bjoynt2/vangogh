@@ -1,0 +1,15 @@
+# Development & Scratch
+scratch/
+*.pyc
+__pycache__/
+
+# OS & Editor Files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Large Archives
+*.zip
+*.tar.gz
