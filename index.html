@@ -164,28 +164,28 @@
 <body class="bg-vangogh-midnight text-gray-200 font-sans antialiased selection:bg-vangogh-gold selection:text-black overflow-x-hidden">
 
     <!-- Floating Navigation with Scroll-Spy & Responsive Mobile Drawer -->
-    <header id="mainHeader" class="fixed top-3 sm:top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] sm:w-[96%] max-w-6xl backdrop-blur-xl bg-vangogh-deepNavy/90 border border-vangogh-gold/35 rounded-full px-3.5 sm:px-6 py-2.5 shadow-[0_10px_35px_rgba(0,0,0,0.7)] transition-all duration-300">
-        <div class="flex items-center justify-between gap-2 sm:gap-4">
+    <header id="mainHeader" class="fixed top-2 sm:top-4 left-1/2 -translate-x-1/2 z-50 w-[96%] max-w-7xl backdrop-blur-xl bg-vangogh-deepNavy/92 border border-vangogh-gold/35 rounded-full px-3 sm:px-5 py-2 sm:py-2.5 shadow-[0_10px_35px_rgba(0,0,0,0.7)] transition-all duration-300">
+        <div class="flex items-center justify-between gap-1.5 sm:gap-3">
             <!-- Brand Logo -->
             <a href="#" class="flex items-center space-x-2 group flex-shrink-0">
                 <span class="w-2.5 h-2.5 rounded-full bg-vangogh-gold animate-pulse"></span>
-                <span class="text-lg sm:text-2xl text-vangogh-gold font-cinzel font-bold tracking-widest group-hover:scale-105 transition-transform">VINCENT</span>
-                <span class="hidden xl:inline-block text-[11px] uppercase tracking-widest text-vangogh-ochre/80 font-mono border-l border-vangogh-gold/30 pl-3">Spark Arena Auckland &bull; 2021</span>
+                <span class="text-base sm:text-xl xl:text-2xl text-vangogh-gold font-cinzel font-bold tracking-widest group-hover:scale-105 transition-transform">VINCENT</span>
+                <span class="hidden 2xl:inline-block text-[11px] uppercase tracking-widest text-vangogh-ochre/80 font-mono border-l border-vangogh-gold/30 pl-3">Spark Arena Auckland &bull; 2021</span>
             </a>
 
             <!-- Desktop Nav (Visible on lg and up >= 1024px) -->
-            <nav id="navbarLinks" class="hidden lg:flex items-center space-x-1 xl:space-x-2 text-xs xl:text-sm font-medium tracking-wide">
-                <a href="#hero" id="nav-hero" class="nav-link px-3 py-1.5 rounded-full text-gray-300 hover:text-vangogh-gold hover:bg-white/5 transition flex-shrink-0">Overview</a>
-                <a href="#carousel" id="nav-carousel" class="nav-link px-3 py-1.5 rounded-full text-gray-300 hover:text-vangogh-gold hover:bg-white/5 transition flex-shrink-0">Spotlight</a>
-                <a href="#essay" id="nav-essay" class="nav-link px-3 py-1.5 rounded-full text-gray-300 hover:text-vangogh-gold hover:bg-white/5 transition flex-shrink-0">Four Acts</a>
-                <a href="#cinema" id="nav-cinema" class="nav-link px-3 py-1.5 rounded-full text-gray-300 hover:text-vangogh-gold hover:bg-white/5 transition flex-shrink-0 flex items-center gap-1"><span>Projections</span><span class="w-1.5 h-1.5 rounded-full bg-vangogh-gold animate-pulse"></span></a>
-                <a href="#rooms" id="nav-rooms" class="nav-link px-3 py-1.5 rounded-full text-gray-300 hover:text-vangogh-gold hover:bg-white/5 transition flex-shrink-0">Rooms</a>
-                <a href="#guide" id="nav-guide" class="nav-link px-3 py-1.5 rounded-full text-gray-300 hover:text-vangogh-gold hover:bg-white/5 transition flex-shrink-0">Guide</a>
-                <a href="#soundtrack" onclick="openSoundtrackTab()" id="nav-soundtrack" class="nav-link px-3 py-1.5 rounded-full text-[#1DB954] hover:text-white hover:bg-[#1DB954]/20 transition flex-shrink-0 flex items-center gap-1.5 border border-[#1DB954]/30">
+            <nav id="navbarLinks" class="hidden lg:flex items-center space-x-1 xl:space-x-1.5 text-xs xl:text-[13px] font-medium tracking-wide flex-shrink-0">
+                <a href="#hero" id="nav-hero" class="nav-link px-2.5 xl:px-3 py-1.5 rounded-full text-gray-300 hover:text-vangogh-gold hover:bg-white/5 transition flex-shrink-0">Overview</a>
+                <a href="#carousel" id="nav-carousel" class="nav-link px-2.5 xl:px-3 py-1.5 rounded-full text-gray-300 hover:text-vangogh-gold hover:bg-white/5 transition flex-shrink-0">Spotlight</a>
+                <a href="#essay" id="nav-essay" class="nav-link px-2.5 xl:px-3 py-1.5 rounded-full text-gray-300 hover:text-vangogh-gold hover:bg-white/5 transition flex-shrink-0">Four Acts</a>
+                <a href="#cinema" id="nav-cinema" class="nav-link px-2.5 xl:px-3 py-1.5 rounded-full text-gray-300 hover:text-vangogh-gold hover:bg-white/5 transition flex-shrink-0 flex items-center gap-1"><span>Projections</span><span class="w-1.5 h-1.5 rounded-full bg-vangogh-gold animate-pulse"></span></a>
+                <a href="#rooms" id="nav-rooms" class="nav-link px-2.5 xl:px-3 py-1.5 rounded-full text-gray-300 hover:text-vangogh-gold hover:bg-white/5 transition flex-shrink-0">Rooms</a>
+                <a href="#guide" id="nav-guide" class="nav-link px-2.5 xl:px-3 py-1.5 rounded-full text-gray-300 hover:text-vangogh-gold hover:bg-white/5 transition flex-shrink-0">Guide</a>
+                <a href="#soundtrack" onclick="openSoundtrackTab()" id="nav-soundtrack" class="nav-link px-2.5 xl:px-3 py-1.5 rounded-full text-[#1DB954] hover:text-white hover:bg-[#1DB954]/20 transition flex-shrink-0 flex items-center gap-1.5 border border-[#1DB954]/30">
                     <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.309c-.218.358-.684.471-1.042.253-2.859-1.747-6.459-2.143-10.697-1.173-.41.094-.816-.164-.91-.574-.094-.41.164-.816.574-.91 4.636-1.06 8.621-.617 11.822 1.341.358.218.471.684.253 1.063zm1.47-3.267c-.275.448-.863.593-1.311.318-3.273-2.012-8.261-2.596-12.133-1.42-.505.153-1.036-.135-1.189-.64-.153-.505.135-1.036.64-1.189 4.417-1.34 9.917-.687 13.675 1.62.448.275.593.863.318 1.311zm.126-3.411c-3.926-2.331-10.401-2.546-14.156-1.406-.6.182-1.238-.164-1.42-.764-.182-.6.164-1.238.764-1.42 4.316-1.31 11.458-1.06 15.962 1.614.542.322.721 1.026.399 1.568-.322.542-1.026.721-1.549.408z"/></svg>
                     <span>Soundtrack</span>
                 </a>
-                <a href="#gallery" id="nav-gallery" class="nav-link px-3.5 py-1.5 rounded-full border border-vangogh-gold/50 text-vangogh-gold hover:bg-vangogh-gold hover:text-vangogh-midnight font-bold transition shadow-sm flex-shrink-0">Archive</a>
+                <a href="#gallery" id="nav-gallery" class="nav-link px-3 xl:px-3.5 py-1.5 rounded-full border border-vangogh-gold/60 text-vangogh-gold hover:bg-vangogh-gold hover:text-vangogh-midnight font-bold transition shadow-sm flex-shrink-0">Archive</a>
             </nav>
 
             <!-- Mobile & Tablet Action Bar (< 1024px) -->
