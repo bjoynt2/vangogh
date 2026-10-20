@@ -1570,22 +1570,41 @@
         </div>
     </div>
 
-    <!-- Footer: Closing Reflections -->
-    <footer class="py-16 bg-black border-t border-vangogh-gold/30 text-center px-4 relative overflow-hidden">
+    <!-- Footer: Full-Bleed Starry Night Masterpiece Background -->
+    <footer id="footer" class="py-20 bg-vangogh-midnight border-t border-vangogh-gold/30 text-center px-4 relative overflow-hidden">
+        <!-- ======================================================== -->
+        <!-- STARRY NIGHT FULL-BLEED BACKGROUND (100% Page Width)     -->
+        <!-- ======================================================== -->
+        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
+            <!-- Full Starry Night Masterpiece: Stretched across the entire width of the page with zero seams -->
+            <div id="footerStarryNightBg" class="absolute -top-8 -bottom-8 -left-8 -right-8 w-[calc(100%+4rem)] h-[calc(100%+4rem)] bg-cover bg-no-repeat opacity-90 starry-full-bleed animate-celestial-drift transition-transform duration-700 ease-out will-change-transform" style="background-image: url('Van Gogh/starry_night_masterpiece.jpg'); background-position: center 30%;"></div>
+
+            <!-- Soft Curatorial Atmosphere: Protects typography while keeping painting 100% visible across width -->
+            <div class="absolute inset-0 bg-gradient-to-t from-[#060a14] via-black/60 to-[#060a14]/90 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-transparent via-50% to-black/75 pointer-events-none"></div>
+
+            <!-- Golden & Cobalt Atmospheric Glow Orbs -->
+            <div class="absolute top-6 left-1/4 w-80 h-80 bg-vangogh-gold/20 rounded-full blur-[100px] pointer-events-none animate-star-glow"></div>
+            <div class="absolute bottom-6 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <!-- Interactive Starlight Particle & Cosmic Swirl Canvas -->
+            <canvas id="footerStarCanvas" class="absolute inset-0 w-full h-full pointer-events-auto"></canvas>
+        </div>
+
         <div class="max-w-4xl mx-auto space-y-6 relative z-10">
             <h2 class="text-3xl font-cinzel font-bold text-vangogh-gold">&ldquo;I dream my painting, and I paint my dream.&rdquo;</h2>
-            <p class="text-gray-400 text-sm max-w-2xl mx-auto leading-relaxed">
+            <p class="text-gray-300 text-sm max-w-2xl mx-auto leading-relaxed">
                 Van Gogh: The Immersive Experience &bull; Spark Arena, Auckland &bull; Visited 10 April 2021.<br>
                 Curated digital exhibition archive compiled with Post-Impressionist chromatic vibrancy, celebrating Vincent van Gogh&rsquo;s eternal dialogue between color, light, and soul.
             </p>
-            <div class="pt-4 flex items-center justify-center space-x-6 text-xs text-gray-400 uppercase tracking-widest font-mono">
+            <div class="pt-4 flex items-center justify-center space-x-6 text-xs text-vangogh-ochre uppercase tracking-widest font-mono">
                 <span>Sensory4&trade; Technology</span>
                 <span>&bull;</span>
                 <span>Grande Experiences</span>
                 <span>&bull;</span>
                 <span>Spark Arena Auckland</span>
             </div>
-            <p class="text-xs text-gray-500">&copy; 2021&ndash;2026 Van Gogh Exhibition Monograph &bull; All Rights Reserved.</p>
+            <p class="text-xs text-gray-400">&copy; 2021&ndash;2026 Van Gogh Exhibition Monograph &bull; All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -3744,6 +3763,7 @@
             isAudioPlaying = true;
             startVisualizer();
             initHeroStarryExperience();
+            initFooterStarryExperience();
         }
 
         function stopSoundscape() {
@@ -3880,6 +3900,7 @@
             // Initialize visualizer and carousel progress
             startVisualizer();
             initHeroStarryExperience();
+            initFooterStarryExperience();
             updateCarouselProgress();
         });
 
@@ -4042,6 +4063,153 @@
 
             heroAnimId = requestAnimationFrame(renderHeroCanvas);
         }
+
+        // ========================================================
+        // FOOTER STARRY NIGHT MASTERPIECE EXPERIENCE
+        // ========================================================
+        let footerCanvas = null;
+        let footerCtx = null;
+        let footerAnimId = null;
+        let footerParticles = [];
+        let footerMouseX = -1000;
+        let footerMouseY = -1000;
+        let targetFooterMouseX = -1000;
+        let targetFooterMouseY = -1000;
+
+        function initFooterStarryExperience() {
+            footerCanvas = document.getElementById('footerStarCanvas');
+            if (!footerCanvas) return;
+            footerCtx = footerCanvas.getContext('2d');
+
+            function resizeFooterCanvas() {
+                if (!footerCanvas) return;
+                footerCanvas.width = footerCanvas.offsetWidth;
+                footerCanvas.height = footerCanvas.offsetHeight;
+                createFooterParticles();
+            }
+
+            window.addEventListener('resize', resizeFooterCanvas);
+            resizeFooterCanvas();
+
+            // Interactive Mouse Swirl & Parallax
+            const footerSection = document.getElementById('footer') || document.querySelector('footer');
+            const starryBg = document.getElementById('footerStarryNightBg');
+
+            if (footerSection) {
+                footerSection.addEventListener('mousemove', (e) => {
+                    const rect = footerSection.getBoundingClientRect();
+                    targetFooterMouseX = e.clientX - rect.left;
+                    targetFooterMouseY = e.clientY - rect.top;
+
+                    // Subtle 3D parallax on background image
+                    if (starryBg) {
+                        const normX = ((e.clientX - rect.left) / rect.width) - 0.5;
+                        const normY = ((e.clientY - rect.top) / rect.height) - 0.5;
+                        starryBg.style.transform = `scale(1.05) translate3d(${normX * -25}px, ${normY * -20}px, 0)`;
+                    }
+                });
+
+                footerSection.addEventListener('mouseleave', () => {
+                    targetFooterMouseX = -1000;
+                    targetFooterMouseY = -1000;
+                    if (starryBg) {
+                        starryBg.style.transform = 'scale(1.02) translate3d(0, 0, 0)';
+                    }
+                });
+            }
+
+            if (!footerAnimId) {
+                renderFooterCanvas();
+            }
+        }
+
+        function createFooterParticles() {
+            if (!footerCanvas) return;
+            footerParticles = [];
+            const w = footerCanvas.width;
+            const h = footerCanvas.height;
+            const count = Math.min(65, Math.floor(w / 20));
+
+            for (let i = 0; i < count; i++) {
+                const px = Math.random() * w;
+                const py = Math.random() * h;
+
+                footerParticles.push({
+                    x: px,
+                    y: py,
+                    baseX: px,
+                    baseY: py,
+                    radius: Math.random() * 2.2 + 0.8,
+                    color: Math.random() < 0.65 ? '#F5B014' : (Math.random() < 0.5 ? '#60A5FA' : '#FFF7D6'),
+                    alpha: Math.random() * 0.7 + 0.3,
+                    pulseSpeed: 0.02 + Math.random() * 0.04,
+                    pulsePhase: Math.random() * Math.PI * 2,
+                    angle: Math.random() * Math.PI * 2,
+                    speed: 0.3 + Math.random() * 0.6,
+                    swirlRadius: 15 + Math.random() * 35
+                });
+            }
+        }
+
+        function renderFooterCanvas() {
+            if (!footerCtx || !footerCanvas) return;
+            footerCtx.clearRect(0, 0, footerCanvas.width, footerCanvas.height);
+
+            footerMouseX += (targetFooterMouseX - footerMouseX) * 0.1;
+            footerMouseY += (targetFooterMouseY - footerMouseY) * 0.1;
+
+            footerParticles.forEach(p => {
+                p.pulsePhase += p.pulseSpeed;
+                const currentAlpha = p.alpha * (0.6 + 0.4 * Math.sin(p.pulsePhase));
+
+                p.angle += p.speed * 0.015;
+                p.x = p.baseX + Math.cos(p.angle) * p.swirlRadius;
+                p.y = p.baseY + Math.sin(p.angle) * (p.swirlRadius * 0.6);
+
+                if (footerMouseX > 0 && footerMouseY > 0) {
+                    const dx = p.x - footerMouseX;
+                    const dy = p.y - footerMouseY;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const maxDist = 160;
+
+                    if (dist < maxDist) {
+                        const force = (1 - dist / maxDist) * 35;
+                        p.x += (-dy / dist) * force * 0.6;
+                        p.y += (dx / dist) * force * 0.6;
+                    }
+                }
+
+                footerCtx.beginPath();
+                footerCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                footerCtx.fillStyle = p.color;
+                footerCtx.globalAlpha = currentAlpha;
+                footerCtx.shadowBlur = p.radius * 6;
+                footerCtx.shadowColor = p.color;
+                footerCtx.fill();
+            });
+
+            if (footerMouseX > 0 && footerMouseY > 0) {
+                footerCtx.beginPath();
+                footerCtx.strokeStyle = 'rgba(245, 176, 20, 0.25)';
+                footerCtx.lineWidth = 1;
+                footerParticles.forEach(p => {
+                    const dx = p.x - footerMouseX;
+                    const dy = p.y - footerMouseY;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 110) {
+                        footerCtx.moveTo(footerMouseX, footerMouseY);
+                        footerCtx.lineTo(p.x, p.y);
+                    }
+                });
+                footerCtx.stroke();
+            }
+
+            footerCtx.shadowBlur = 0;
+            footerCtx.globalAlpha = 1;
+
+            footerAnimId = requestAnimationFrame(renderFooterCanvas);
+        }
+
 
         // Hero Audio Quick-Immerse Toggle
 
